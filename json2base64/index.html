@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JSON to Base64</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@2.0.3/build/pure-min.min.css"
+    />
+  </head>
+
+  <body>
+    <section class="header">
+      <div class="container">
+        <h1 class="title">JSON to Base64</h1>
+      </div>
+    </section>
+    <div class="container">
+      <div class="button-panel">
+        <button class="pure-button" id="format-btn">Format</button>
+        <button class="pure-button" id="base64encode-btn">Base64 Encode</button>
+        <button class="pure-button" id="base64decode-btn">Base64 Decode</button>
+      </div>
+
+      <div class="content pure-form pure-form-stacked">
+        <div class="pure-g">
+          <div class="pure-u-1-2">
+            <fieldset class="box">
+              <legend>JSON</legend>
+              <textarea
+                class="pure-input-1 textarea"
+                id="input"
+                rows="50"
+              ></textarea>
+            </fieldset>
+          </div>
+          <div class="pure-u-1-2 text">
+            <fieldset class="box">
+              <legend>base64</legend>
+              <textarea
+                class="pure-input-1 textarea"
+                id="output"
+                rows="50"
+              ></textarea>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+      <div id="alert" class="message"></div>
+    </div>
+    <footer class="footer">
+      <p>
+        <strong>JSON to Base64</strong> by
+        <a href="https://github.com/wayjam/online-toolset">WayJam</a>. The source code is licensed
+        <a href="https://github.com/wayjam/online-toolset/blob/master/LICENSE">MIT</a>.
+      </p>
+    </footer>
+  </body>
+  <style>
+    body,
+    html {
+      padding: 0;
+      margin: 0;
+      background-color: #fafafa;
+    }
+
+    .button-panel {
+      padding: 0 10px;
+      margin: 2em 0;
+    }
+
+    .button-panel button:not(:last-child) {
+      margin-right: 1em;
+    }
+
+    .pure-g > div {
+      box-sizing: border-box;
+    }
+
+    .content .box {
+      padding: 0 5px;
+    }
+
+    .message {
+      margin-top: 1em;
+      padding: 0 1em;
+      font-family: Georgia, serif;
+      font-weight: 600;
+      color: rgb(223, 117, 20);
+      height: 1em;
+      line-height: 1em;
+    }
+
+    .header {
+      font-family: Raleway, Helvetica Neue, Helvetica, Arial, sans-serif;
+
+      margin: 0 auto;
+      padding: 1em;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+      letter-spacing: 0.05em;
+    }
+
+    .header h1 {
+      font-weight: 100;
+      margin: 0;
+      font-size: 320%;
+    }
+
+    .footer {
+      border-top: 1px solid #eee;
+      margin-top: 3.4286em;
+      padding: 1.1429em;
+      background: #fafafa;
+    }
+
+    .footer p {
+      text-align: center;
+      font-size: 0.8em;
+      color: dimgray;
+    }
+  </style>
+  <script>
+    (function() {
+      const jsonTextArea = document.getElementById("input");
+      const outputTextArea = document.getElementById("output");
+      const formatBtn = document.getElementById("format-btn");
+      const encodeBtn = document.getElementById("base64encode-btn");
+      const decodeBtn = document.getElementById("base64decode-btn");
+      const alertMsg = document.getElementById("alert");
+
+      function formatJSON(input, indent) {
+        let s = "";
+        try {
+          s = JSON.parse(input);
+          alertMsg.innerText = "";
+        } catch (error) {
+          alertMsg.innerText = "Not a valid JSON.";
+          return "";
+        }
+        return JSON.stringify(s, null, indent);
+      }
+
+      formatBtn.addEventListener("click", function(e) {
+        if (jsonTextArea.value.length > 0) {
+          jsonTextArea.value = formatJSON(jsonTextArea.value, 2);
+        }
+      });
+      jsonTextArea.addEventListener(
+        "change",
+        function(e) {
+          alertMsg.innerText = "";
+        },
+        true
+      );
+      encodeBtn.addEventListener("click", function(e) {
+        if (jsonTextArea.value.length > 0) {
+          const s = formatJSON(jsonTextArea.value, 0);
+          outputTextArea.value = s.length > 0 ? Base64.encode(s) : "";
+          outputTextArea.select();
+        }
+      });
+      decodeBtn.addEventListener("click", function(e) {
+        if (outputTextArea.value.length > 0) {
+          jsonTextArea.value = formatJSON(
+            Base64.decode(outputTextArea.value),
+            2
+          );
+          jsonTextArea.select();
+        }
+      });
+    })();
+  </script>
+</html>
