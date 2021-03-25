@@ -169,7 +169,6 @@
       );
       encodeBtn.addEventListener("click", function (e) {
         if (jsonTextArea.value.length > 0) {
-          console.log(escapeCheckbox.value);
           let s;
           if (!escapeCheckbox.checked) {
             s = JSON.stringify(JSON.parse(jsonTextArea.value));
