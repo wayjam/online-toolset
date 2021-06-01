@@ -72,3 +72,11 @@ tags
 # Ignore all local history of files
 .history
 .ionide
+
+
+/node_modules/
+/dist/
+/.vscode/
+.DS_Store
+
+yarn-error.log
