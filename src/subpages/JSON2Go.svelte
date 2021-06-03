@@ -13,7 +13,7 @@
   let errMsg = '';
   let jsonToGo;
 
-  function encode() {
+  function transform() {
     errMsg = '';
     const jsonVal = leftEditor.getValue();
     if (jsonVal.length > 0) {
@@ -45,7 +45,7 @@
 </svelte:head>
 
 <div class="container mx-auto px-4">
-  <button class="btn-blue" on:click={encode}>Encode</button>
+  <button class="btn-blue" on:click={transform}>Transform</button>
   <label for="nested-struct">
     <input type="checkbox" id="nested-struct" bind:checked={nestedStruct} /> Nested Sturct
   </label>
