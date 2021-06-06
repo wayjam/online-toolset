@@ -23,14 +23,7 @@ const appRoutes = [
         description: "Helps to marshal JSON to plain string and helps to unmarshal string to JSON object.",
         path: "/json2str",
         component: wrap({
-            // Note that this is a function that returns the import
             asyncComponent: () => import('../subpages/JSON2Str.svelte'),
-            // Show the loading component while the component is being downloaded
-            // loadingComponent: Loading,
-            // Pass values for the `params` prop of the loading component
-            // loadingParams: {
-            //     message: 'Loading the Name route…'
-            // }
         }),
     },
     {
@@ -39,6 +32,21 @@ const appRoutes = [
         path: "/json2go",
         component: wrap({
             asyncComponent: () => import('../subpages/JSON2Go.svelte'),
+        }),
+    },
+    {
+        name: "YAML to JSON",
+        description: "Helps to converts YAML to JSON.",
+        path: "/yaml2json",
+        component: wrap({
+            asyncComponent: () => import('../subpages/YAML2JSON.svelte'),
+        }),
+    }, {
+        name: "YAML to String",
+        description: "Helps to converts JSON to String(Base64).",
+        path: "/yaml2str",
+        component: wrap({
+            asyncComponent: () => import('../subpages/YAML2Str.svelte'),
         }),
     }
 ]

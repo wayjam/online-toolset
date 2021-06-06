@@ -1,37 +1,28 @@
 <script>
   import { getContext } from 'svelte';
-  import { formatJSON } from '../utils/index';
+  import { Base64 } from 'js-base64';
+  import 'codemirror/mode/yaml/yaml.js';
   import CodeMirrorEditor from '../lib/CodeMirror.svelte';
 
   const { setSubTitle } = getContext('root');
-  setSubTitle('JSON to String');
+  setSubTitle('YAML to String');
 
   let leftEditor;
   let rightEditor;
-  let escape = false;
   let errMsg = '';
-
-  function format() {
-    let jsonVal = leftEditor.getValue();
-    if (jsonVal.length > 0) {
-      jsonVal = formatJSON(jsonVal, 2, true);
-      leftEditor.setValue(jsonVal);
-    }
-  }
+  let withBase64 = false;
+  let YAML;
 
   function encode() {
     errMsg = '';
-    const jsonVal = leftEditor.getValue();
-    if (jsonVal.length > 0) {
+    const yamlVal = leftEditor.getValue();
+    if (yamlVal.length > 0) {
       leftEditor.setCursor(0);
-      let s;
       try {
-        if (!escape) {
-          s = JSON.stringify(JSON.parse(jsonVal));
-        } else {
-          s = JSON.stringify(formatJSON(jsonVal, 0, true));
+        let s = JSON.stringify(yamlVal);
+        if (withBase64) {
+          s = Base64.encode(s);
         }
-        leftEditor.setValue(formatJSON(jsonVal, 2, true));
         rightEditor.setValue(s);
         rightEditor.execCommand('selectAll');
       } catch (err) {
@@ -45,14 +36,12 @@
     const strVal = rightEditor.getValue();
     if (strVal.length > 0) {
       rightEditor.setCursor(0);
-      let s;
       try {
-        if (!escape) {
-          s = JSON.stringify(JSON.parse(strVal));
-        } else {
-          s = formatJSON(strVal, 2, false);
+        let s = strVal;
+        if (withBase64) {
+          s = Base64.decode(s);
         }
-        s = formatJSON(s, 2, true);
+        s = JSON.parse(s);
         leftEditor.setValue(s);
         leftEditor.execCommand('selectAll');
       } catch (err) {
@@ -60,14 +49,23 @@
       }
     }
   }
+
+  const loadExternal = () => {
+    YAML = globalThis.jsyaml;
+  };
 </script>
 
+<svelte:head>
+  <script
+    src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"
+    on:load={loadExternal}></script>
+</svelte:head>
+
 <div class="container mx-auto px-4">
-  <button class="btn-blue" on:click={format}>Format</button>
   <button class="btn-blue" on:click={encode}>Encode</button>
   <button class="btn-blue" on:click={decode}>Decode</button>
-  <label for="escape">
-    <input type="checkbox" id="escape" bind:checked={escape} /> Escape
+  <label for="base64">
+    <input type="checkbox" id="base64" bind:checked={withBase64} /> Base64
   </label>
   <div class="leading-relaxed block text-red-500 font-mono">
     {errMsg}
@@ -75,14 +73,13 @@
 
   <div class="notranslate flex md:flex-nowrap flex-wrap justify-between space-x-2">
     <fieldset class="block border border-gray-300 md:w-1/2 w-full flex-grow-0 flex-shrink-0">
-      <legend class="pr-2 font-semibold text-gray-400">JSON</legend>
+      <legend class="pr-2 font-semibold text-gray-400">YAML</legend>
       <CodeMirrorEditor
         class="fix-height-container"
         bind:editor={leftEditor}
         options={{
           mode: {
-            name: 'javascript',
-            json: true,
+            name: 'yaml',
           },
         }}
       />
