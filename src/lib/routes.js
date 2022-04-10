@@ -48,7 +48,21 @@ const appRoutes = [
         component: wrap({
             asyncComponent: () => import('../subpages/YAML2Str.svelte'),
         }),
-    }
+    }, {
+        name: "JSON to JSON Schema",
+        description: "Convert JavaScript Object or Array to JSON Schema",
+        path: "/json2jsonschema",
+        component: wrap({
+            asyncComponent: () => import('../subpages/JSON2JSONSchema.svelte'),
+        }),
+    },
+    {
+        name: "Regex101",
+        description: "regexp tools",
+        path: "https://regex101.com/",
+        external: true,
+    },
+    
 ]
 
 
@@ -56,7 +70,7 @@ const routes = {
     // Exact path
     '/': Index,
 
-    ...appRoutes.reduce((acc, curr) => {
+    ...appRoutes.filter(r => !r.external).reduce((acc, curr) => {
         return {
             ...acc,
             [curr.path]: curr.component

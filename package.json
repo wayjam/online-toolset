@@ -24,8 +24,9 @@
   "dependencies": {
     "codemirror": "^5.61.0",
     "js-base64": "^3.6.1",
+    "js2schema": "^1.0.8",
     "pretty-format": "^27.0.2",
     "svelte-loadable": "^1.5.1",
-    "svelte-spa-router": "^3.1.0"
+    "svelte-spa-router": "^3.2.0"
   }
 }
