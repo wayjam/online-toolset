@@ -18,9 +18,9 @@
       leftEditor.setCursor(0);
       try {
         const obj = JSON.parse(jsonVal);
-        leftEditor.setValue(formatJSON(jsonVal, 2, true));
         const result = js2schema(obj);
         const s = formatJSON(result, 2, true);
+        leftEditor.setValue(formatJSON(jsonVal, 2, true));
         rightEditor.setValue(s);
         rightEditor.execCommand("selectAll");
       } catch (err) {
