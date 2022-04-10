@@ -1,8 +1,7 @@
 <script>
-  import { link } from 'svelte-spa-router';
+  import { link } from "svelte-spa-router";
   let route = {};
   export { route };
-  console.log(route);
 
 </script>
 
