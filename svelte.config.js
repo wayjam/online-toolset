@@ -1,12 +1,14 @@
-const sveltePreprocess = require('svelte-preprocess');
-const cssModules = require('svelte-preprocess-cssmodules');
-const { asMarkupPreprocessor } = require('svelte-as-markup-preprocessor');
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/kit/vite';
 
-module.exports = {
-  preprocess: [
-    asMarkupPreprocessor([
-      sveltePreprocess({ postcss: true }),
-    ]),
-    cssModules()
-  ]
+const config = {
+	kit: {
+		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
+		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
+		adapter: adapter()
+	},
+	preprocess: vitePreprocess()
 };
+
+export default config;
