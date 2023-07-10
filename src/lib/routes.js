@@ -75,8 +75,13 @@ const devGroup = [
 const editGroup = [
 	{
 		name: 'Simple Editor',
-		description: 'demo monaco editor',
+		description: 'Demo monaco editor',
 		path: '/monaco'
+	},
+	{
+		name: 'Duplicate Line',
+		description: 'Remove duplicate lines',
+		path: '/duplicate-line'
 	}
 ];
 

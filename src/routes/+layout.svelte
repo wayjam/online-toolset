@@ -10,11 +10,14 @@
 	});
 </script>
 
-<main class="main-h-screen sm:py-12">
-	<header class="text-gray-600 body-font">
-		<div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center border-b">
+<main class="main-h-screen bg-gray-50">
+	<header class="text-gray-600 bg-slate-100 border-b border-slate-300">
+		<div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
 			<div class="flex flex-wrap md:mr-auto">
-				<a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+				<a
+					href="/"
+					class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+				>
 					<svg
 						width="32px"
 						height="32px"
@@ -23,7 +26,7 @@
 						xmlns="http://www.w3.org/2000/svg"
 						stroke-linecap="round"
 						stroke-linejoin="round"
-						class="text-red rounded-full"
+						class="text-lg text-red rounded-full"
 					>
 						<g transform="matrix(0.0625,0,0,0.0625,0,0)">
 							<path
@@ -31,12 +34,14 @@
 							/>
 						</g>
 					</svg>
-					<span class="ml-3 text-xl">ToolSet</span>
+					<span class="ml-3 text-2xl text-neutral-900">ToolSet</span>
 				</a>
 				<div
 					class="ml-4 mr-4 my-auto h-4 inner-block border-l border-gray-400 align-middle items-center text-center"
 				/>
-				<div class="flex title-font font-medium items-center text-xl cursor-default">
+				<div
+					class="flex title-font font-medium items-center text-xl text-sky-900 cursor-default"
+				>
 					{pageTitle}
 				</div>
 			</div>
@@ -64,14 +69,14 @@
 		<slot />
 	</section>
 	<footer class="text-gray-600 body-font footer">
-		<div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+		<div class="container px-5 py-10 mx-auto flex items-center sm:flex-row flex-col">
 			<p
 				class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
 			>
 				© 2023 ToolSet — The source code is licensed
 				<a
 					href="https://github.com/wayjam/online-toolset/blob/master/LICENSE"
-					class="text-gray-600 ml-1">MIT</a
+					class="text-gray-600 ml-1 hover:underline">MIT</a
 				>.
 			</p>
 			<span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start" />

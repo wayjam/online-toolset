@@ -18,7 +18,7 @@
 			{#each routesGroup.routes as route}
 				<div class="p-4 lg:w-1/4 md:w-full ">
 					<div
-						class="border-2 rounded-md border-gray-300 border-opacity-50 p-4 bg-blue-50 bg-opacity-50"
+						class="border-2 rounded-md border-gray-300 border-opacity-50 p-4 bg-indigo-100 bg-opacity-50"
 					>
 						<Item {route} />
 					</div>

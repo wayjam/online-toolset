@@ -77,9 +77,9 @@
 				const unixEpoch = parseInt(timestampStr);
 				let obj;
 				if (enableMS) {
-					obj = dayjs.unix(unixEpoch);
-				} else {
 					obj = dayjs(unixEpoch);
+				} else {
+					obj = dayjs.unix(unixEpoch);
 				}
 				assign(obj);
 				dateStr = obj.toISOString();
