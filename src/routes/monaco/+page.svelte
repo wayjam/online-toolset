@@ -11,5 +11,5 @@
 </script>
 
 <div class="container mx-auto px-4">
-	<Monaco class="editor-60vh" content={content}/>
+	<Monaco class="codemirror-editor" content={content}/>
 </div>

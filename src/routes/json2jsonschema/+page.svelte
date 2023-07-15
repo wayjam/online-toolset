@@ -42,24 +42,30 @@
 		{errMsg}
 	</div>
 
-	<div class="notranslate flex md:flex-nowrap flex-wrap justify-between space-x-2">
-		<fieldset class="block border border-gray-300 md:w-1/2 w-full flex-grow-0 flex-shrink-0">
+	<div
+		class="flex flex-wrap flex-row flex-1 space-x-0 justify-between items-stretch xl:space-x-2 xl:flex-nowrap"
+	>
+		<fieldset
+			class="border border-gray-300 flex-none overflow-hidden bg-zinc-100 basis-full xl:basis-1/2"
+		>
 			<legend class="pr-2 font-semibold text-gray-400">JSON</legend>
 			<div
-			class="editor-60vh"
-			use:codemirror={{
-				value: '{}',
-				lang: json(),
-				tabSize: 2,
-				instanceStore: leftEditor,
-				extensions: codeMirrorUtils.baseExtensions
-			}}
-		/>
+				class="codemirror-editor"
+				use:codemirror={{
+					value: '{}',
+					lang: json(),
+					tabSize: 2,
+					instanceStore: leftEditor,
+					extensions: codeMirrorUtils.baseExtensions
+				}}
+			/>
 		</fieldset>
-		<fieldset class="block border border-gray-300 md:w-1/2 w-full flex-grow-0 flex-shrink-0">
+		<fieldset
+			class="border border-gray-300 flex-none overflow-hidden bg-zinc-100 basis-full xl:basis-1/2"
+		>
 			<legend class="pr-2 font-semibold text-gray-400">JSON Schema</legend>
 			<div
-				class="editor-60vh"
+				class="codemirror-editor"
 				use:codemirror={{
 					value: '',
 					tabSize: 2,

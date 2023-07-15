@@ -28,7 +28,7 @@ const codeMirrorUtils = {
 		minimalSetup,
 		EditorView.theme(
 			{
-				'&': { height: '60vh' },
+				'&': { height: '100%', width: '100%' },
 				'.cm-scroller': { overflow: 'auto' }
 			},
 			{}

@@ -20,7 +20,7 @@
 <div class="container mx-auto px-4">
 	<button class="btn-blue" on:click={run}>Run</button>
 	<div
-		class="editor-60vh border-collapse border border-solid border-current my-5"
+		class="editor border-collapse border border-solid border-current my-5"
 		use:codemirror={{
 			value: '',
 			tabSize: 2,

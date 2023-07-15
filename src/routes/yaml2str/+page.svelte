@@ -17,7 +17,7 @@
 
 	function encode() {
 		errMsg = '';
-		const yamlVal =codeMirrorUtils.getValue($leftEditor);
+		const yamlVal = codeMirrorUtils.getValue($leftEditor);
 		if (yamlVal.length > 0) {
 			codeMirrorUtils.setFirst($leftEditor);
 			try {
@@ -25,8 +25,8 @@
 				if (withBase64) {
 					s = Base64.encode(s);
 				}
-				codeMirrorUtils.setValue($rightEditor, s)
-				codeMirrorUtils.selectAll($rightEditor)
+				codeMirrorUtils.setValue($rightEditor, s);
+				codeMirrorUtils.selectAll($rightEditor);
 			} catch (err) {
 				errMsg = err;
 			}
@@ -35,7 +35,7 @@
 
 	function decode() {
 		errMsg = '';
-		const strVal =codeMirrorUtils.getValue($rightEditor);
+		const strVal = codeMirrorUtils.getValue($rightEditor);
 		if (strVal.length > 0) {
 			codeMirrorUtils.setFirst($rightEditor);
 			try {
@@ -44,8 +44,8 @@
 					s = Base64.decode(s);
 				}
 				s = JSON.parse(s);
-				codeMirrorUtils.setValue($leftEditor, s)
-				codeMirrorUtils.selectAll($leftEditor)
+				codeMirrorUtils.setValue($leftEditor, s);
+				codeMirrorUtils.selectAll($leftEditor);
 			} catch (err) {
 				errMsg = err;
 			}
@@ -74,11 +74,15 @@
 		{errMsg}
 	</div>
 
-	<div class="notranslate flex md:flex-nowrap flex-wrap justify-between space-x-2">
-		<fieldset class="block border border-gray-300 md:w-1/2 w-full flex-grow-0 flex-shrink-0">
+	<div
+		class="flex flex-wrap flex-row flex-1 space-x-0 justify-between items-stretch xl:space-x-2 xl:flex-nowrap"
+	>
+		<fieldset
+			class="border border-gray-300 flex-none overflow-hidden bg-zinc-100 basis-full xl:basis-1/2"
+		>
 			<legend class="pr-2 font-semibold text-gray-400">YAML</legend>
 			<div
-				class="editor-60vh"
+				class="codemirror-editor"
 				use:codemirror={{
 					value: '',
 					tabSize: 2,
@@ -87,10 +91,12 @@
 				}}
 			/>
 		</fieldset>
-		<fieldset class="block border border-gray-300 md:w-1/2 w-full flex-grow-0 flex-shrink-0">
+		<fieldset
+			class="border border-gray-300 flex-none overflow-hidden bg-zinc-100 basis-full xl:basis-1/2"
+		>
 			<legend class="pr-2 font-semibold text-gray-400">String</legend>
 			<div
-				class="editor-60vh"
+				class="codemirror-editor"
 				use:codemirror={{
 					value: '',
 					tabSize: 2,

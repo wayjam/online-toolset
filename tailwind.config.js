@@ -30,9 +30,6 @@ module.exports = {
 					'@screen 2xl': {
 						maxWidth: '1792px'
 					}
-				},
-				'.editor-60vh': {
-					height: '60vh'
 				}
 			});
 		}

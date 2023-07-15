@@ -55,7 +55,7 @@
 	});
 </script>
 
-<div bind:this={divEl} class={`editor-60vh w-full ${$$props.class || ''}`} />
+<div bind:this={divEl} class={`editor w-full ${$$props.class || ''}`} />
 <svelte:window
 	on:resize={() => {
 		editor.layout({ width: 0, height: 0 });

@@ -6,4 +6,19 @@
 	.btn-blue {
 		@apply py-2 px-4 bg-blue-500 text-white  rounded-lg  hover:bg-blue-700  focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
 	}
+
+	.codemirror-editor {
+		@apply overflow-x-scroll ;
+		min-height: 60vh;
+		max-height: 100vh;
+		position: relative;
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	.codemirror-editor .cm-editor {
+		position: absolute !important;
+	}
 }

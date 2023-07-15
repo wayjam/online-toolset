@@ -16,7 +16,7 @@
 	let dateStr = '';
 	let enableMS = true;
 
-	let obj = dayjs().millisecond(0)
+	let obj = dayjs().millisecond(0);
 	let date = {
 		millisecond: 0,
 		second: 0,
@@ -100,7 +100,7 @@
 
 <div class="container mx-auto px-4">
 	<div class="notranslate flex flex-col">
-		<table class="border-solid border my-5 table-auto ">
+		<table class="border-solid border my-5 table-auto">
 			<thead class="text-lg">
 				<tr>
 					<th class="border border-slate-300">Year</th>
@@ -117,27 +117,58 @@
 			<tbody class="text-base">
 				<tr class="">
 					<td class="border border-slate-300">
-						<input class="text-center w-full" bind:value={date.year} on:input={objChange} />
+						<input
+							type="number"
+							class="text-center w-full"
+							bind:value={date.year}
+							on:input={objChange}
+						/>
 					</td>
 					<td class="border border-slate-300">
-						<input class="text-center  w-full" bind:value={date.month} on:input={objChange} />
+						<input
+							type="number"
+							class="text-center w-full"
+							bind:value={date.month}
+							on:input={objChange}
+						/>
 					</td>
 					<td class="border border-slate-300">
-						<input class="text-center  w-full" bind:value={date.date} on:input={objChange} />
+						<input
+							type="number"
+							class="text-center w-full"
+							bind:value={date.date}
+							on:input={objChange}
+						/>
 					</td>
 					<td class="border border-slate-300">
-						<input class="text-center  w-full" bind:value={date.hour} on:input={objChange} />
+						<input
+							type="number"
+							class="text-center w-full"
+							bind:value={date.hour}
+							on:input={objChange}
+						/>
 					</td>
 					<td class="border border-slate-300">
-						<input class="text-center  w-full" bind:value={date.minute} on:input={objChange} />
+						<input
+							type="number"
+							class="text-center w-full"
+							bind:value={date.minute}
+							on:input={objChange}
+						/>
 					</td>
 					<td class="border border-slate-300">
-						<input class="text-center  w-full" bind:value={date.second} on:input={objChange} />
+						<input
+							type="number"
+							class="text-center w-full"
+							bind:value={date.second}
+							on:input={objChange}
+						/>
 					</td>
 					{#if enableMS}
 						<td class="border border-slate-300">
 							<input
-								class="text-center  w-full"
+								type="number"
+								class="text-center w-full"
 								bind:value={date.millisecond}
 								on:input={objChange}
 							/>
@@ -163,6 +194,7 @@
 			>
 			<div class="text-lg w-full py-5">
 				<span class="font-bold">Unix epoch time: </span><input
+					type="number"
 					class="w-full p-2 bg-slate-200 italic font-mono"
 					bind:value={timestampStr}
 					on:change={timestampStrChange}
@@ -173,7 +205,7 @@
 			<div class="text-lg w-full py-5 italic">
 				<p>
 					<span>ISO 8601: </span><input
-						class="w-1/2 bg-slate-200 italic font-mono"
+						class="w-1/2 bg-slate-200 italic font-mono px-2"
 						bind:value={dateStr}
 						on:change={dateStrChange}
 						on:keydown={dateStrChange}

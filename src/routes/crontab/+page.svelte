@@ -9,6 +9,7 @@
 	let cronstr = '';
 	let readableStr = '';
 	let nextRuns = [];
+	let nextRunCount = 5;
 	const now = new Date();
 	let date = {
 		second: `${now.getSeconds()}`,
@@ -70,7 +71,7 @@
 		try {
 			nextRuns = [];
 			const interval = parser.parseExpression(cronstr, parserOptions);
-			for (let i = 0; i < 5; i++) {
+			for (let i = 0; i < nextRunCount; i++) {
 				const next = interval.next();
 				nextRuns.push(next.value.toString());
 			}
@@ -182,7 +183,17 @@
 				<p>{readableStr}</p>
 			</div>
 			<div class="text-lg py-5">
-				<span class="font-bold">NextRun: </span>
+				<span class="font-bold"
+					>NextRun:
+					<input
+						type="number"
+						class="text-center font-normal"
+						bind:value={nextRunCount}
+						on:change={toReadable}
+						on:keydown={handleKeydown}
+						placeholder=""
+					/><span>times</span>
+				</span>
 				<ul class="italic text-slate-500">
 					{#each nextRuns as s}
 						<li>{s}</li>

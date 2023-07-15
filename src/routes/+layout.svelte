@@ -65,7 +65,7 @@
 			</a>
 		</div>
 	</header>
-	<section class="text-gray-600 body-font py-4">
+	<section class="body-font py-4">
 		<slot />
 	</section>
 	<footer class="text-gray-600 body-font footer">
